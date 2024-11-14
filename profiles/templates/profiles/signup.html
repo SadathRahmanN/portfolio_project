@@ -1,0 +1,33 @@
+{% extends "profiles/base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div class="container" style="margin-top: 50px;">
+    <div class="card mx-auto shadow-sm" style="max-width: 500px;">
+        <div class="card-body">
+            <h3 class="card-title text-center mb-4">Create Your Account</h3>
+            <form method="post" novalidate>
+                {% csrf_token %}  <!-- Add this inside every form using POST method -->
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.help_text %}
+                            <small class="form-text text-muted">{{ field.help_text }}</small>
+                        {% endif %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger mt-1 p-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+            </form>
+            <p class="text-center mt-4">
+                Already have an account? <a href="{% url 'login' %}">Log in</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
