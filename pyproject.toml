@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "portfolio-project"  # Updated the name to something appropriate
+version = "0.1.0"
+description = ""
+authors = ["SADATHRAHMANN <sadathrahman.n@gmail.com>"]
+readme = "README.md"
+package-mode = false  # This disables package mode, useful if you don't need to package it
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
